@@ -1,0 +1,13 @@
+.quantity__item{
+    display: inline-block;
+    color:white;
+}
+div{
+    font:10px
+}
+.button__hide{
+    display:none;
+}
+.button__show{
+    display:inline-block;
+}
