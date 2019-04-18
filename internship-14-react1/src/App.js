@@ -28,11 +28,12 @@ class App extends Component {
       basketList: groceryListToEdit
     });
   };
-  handleGroceryStrike = (event, grocery) => {
-    grocery.isStriked = true;
-    event.currentTarget.style.textDecoration = "line-through";
-    event.stopPropagation();
-  };
+  // handleGroceryStrike = (event, grocery) => {
+  //   console.log("app click")
+  //   grocery.isStriked = true;
+  //   event.currentTarget.style.textDecoration = "line-through";
+  //   event.stopPropagation();
+  // };
   handleGroceryRemove = (event, grocery) => {
     grocery.quantity = grocery.quantity - 1;
     var groceryListToDelete = this.state.basketList;
@@ -85,7 +86,7 @@ class App extends Component {
         <Basket
           name={grocery.name}
           quantity={grocery.quantity}
-          handleGroceryStrike={e => this.handleGroceryStrike(e, grocery)}
+          // handleGroceryClick={e => this.handleGroceryStrike(e, grocery)}
           isStriked={false}
           handleGroceryRemove={e => this.handleGroceryRemove(e, grocery)}
         />
