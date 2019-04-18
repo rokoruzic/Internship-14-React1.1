@@ -8,15 +8,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      basketList: [{ name: "", quantity: 1, isStriked: false }],
+      basketList: [{ name: "", quantity: 1, isStriked: false }]
     };
   }
   handleGroceryAdd = grocery => {
     grocery.quantity = grocery.quantity + 1;
     var groceryListToEdit = this.state.basketList.concat(grocery);
     groceryListToEdit.forEach(function(groceryItem, index) {
-      if (groceryItem.name === grocery.name )
-        groceryListToEdit[index] = grocery;
+      if (groceryItem.name === grocery.name) groceryListToEdit[index] = grocery;
     });
 
     var filter = function(value, index) {
@@ -25,17 +24,16 @@ class App extends Component {
 
     groceryListToEdit = groceryListToEdit.filter(filter, groceryListToEdit);
 
-   console.log(this.state.basketList)
-      this.setState({
-        basketList: groceryListToEdit
-      });
+    this.setState({
+      basketList: groceryListToEdit
+    });
   };
   handleGroceryStrike = (event, grocery) => {
-    grocery.isStriked=true;
+    grocery.isStriked = true;
     event.currentTarget.style.textDecoration = "line-through";
     event.stopPropagation();
   };
-  handleGroceryRemove = (event,grocery) => {
+  handleGroceryRemove = (event, grocery) => {
     grocery.quantity = grocery.quantity - 1;
     var groceryListToDelete = this.state.basketList;
     if (grocery.quantity === 0) {
@@ -73,7 +71,6 @@ class App extends Component {
   }
 
   render() {
-   
     var groceryList = GroceriesList.map((grocery, index) => (
       <div key={index}>
         <Grocery
@@ -90,13 +87,10 @@ class App extends Component {
           quantity={grocery.quantity}
           handleGroceryStrike={e => this.handleGroceryStrike(e, grocery)}
           isStriked={false}
-          handleGroceryRemove={(e) => this.handleGroceryRemove(e,grocery)}
-         
+          handleGroceryRemove={e => this.handleGroceryRemove(e, grocery)}
         />
       </div>
     ));
-
-    console.log(this.state.basketList);
 
     return (
       <>
